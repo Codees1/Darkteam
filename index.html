@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darkteam</title>
+<style>
+/* ---------- СТИЛИ ---------- */
+body{
+    margin:0;
+    background:#000;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#fff;
+}
+#logo{
+    position:fixed;
+    top:20px;
+    left:20px;
+    font-size:24px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    user-select:none;
+}
+.container{
+    max-width:600px;
+    margin:80px auto;
+    padding:30px;
+    border-radius:16px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter: blur(8px);
+    box-shadow:0 0 20px rgba(255,255,255,0.1);
+    animation: glowBox 4s ease-in-out infinite;
+}
+@keyframes glowBox {
+    0%,100% { box-shadow:0 0 20px rgba(255,255,255,0.1); }
+    50%     { box-shadow:0 0 40px rgba(255,255,255,0.25); }
+}
+h2{
+    text-align:center;
+    margin-top:0;
+    border-bottom:1px solid #444;
+    padding-bottom:12px;
+    font-weight:normal;
+    letter-spacing:1px;
+}
+.item{
+    display:flex;
+    align-items:center;
+    padding:20px 0;
+    border-bottom:1px solid #333;
+    cursor:pointer;
+    transition:transform .3s;
+}
+.item:last-child{border-bottom:none;}
+.item:hover{
+    transform:translateY(-3px) scale(1.02);
+}
+.icon{
+    width:50px;
+    height:50px;
+    border-radius:12px;
+    margin-right:20px;
+    background-size:60% auto;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-color:#111;
+    box-shadow:0 0 15px rgba(255,255,255,0.15);
+    animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0%,100% { transform:translateY(0); }
+    50%     { transform:translateY(-5px); }
+}
+.icon.tiktok   { background-image:url('https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg'); }
+.icon.telegram { background-image:url('https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg'); }
+.icon.discord  { background-image:url('https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg'); }
+.item span{
+    font-size:18px;
+    letter-spacing:0.5px;
+    transition:color .3s;
+}
+.item:hover span{
+    color:#fff;
+    text-shadow:0 0 8px #fff;
+}
+</style>
+</head>
+<body>
+
+<div id="logo">Darkteam</div>
+
+<div class="container">
+    <h2>Information</h2>
+
+    <div class="item" data-url="https://www.tiktok.com/@your_account">
+        <div class="icon tiktok"></div>
+        <span>TikTok</span>
+    </div>
+
+    <div class="item" data-url="https://t.me/your_channel">
+        <div class="icon telegram"></div>
+        <span>Telegram channel</span>
+    </div>
+
+    <div class="item" data-url="https://discord.gg/your_invite">
+        <div class="icon discord"></div>
+        <span>Discord</span>
+    </div>
+</div>
+
+<script>
+/* ---------- СКРИПТ ---------- */
+document.querySelectorAll('.item').forEach(el=>{
+    el.addEventListener('click', ()=>{
+        const url = el.getAttribute('data-url');
+        if(url) window.open(url,'_blank');
+    });
+});
+</script>
+
+</body>
+</html>
